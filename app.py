@@ -12,8 +12,8 @@ def home():
 def turma():
     return render_template('turma.html')
 
-@app.route('/cadastrar_aluno')
-def cadastrar_aluno():
+@app.route('/cadastrar')
+def cadastrar():
     return render_template('cadastrar.html')
 
 if __name__ == '__main__':
