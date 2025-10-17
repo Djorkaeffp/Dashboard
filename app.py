@@ -8,6 +8,10 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/turma')
+def turma():
+    return render_template('turma.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
