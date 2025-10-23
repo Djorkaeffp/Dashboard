@@ -17,10 +17,10 @@ def cadastrar():
     return render_template('cadastrar.html')
 
 @app.route('/aluno')
-def listar_alunos():
+def listar_aluno():
     dao = alunoDAO()
     lista = dao.listar()
-    return render_template('aluno/lista.html',lista=lista)
+    return render_template('aluno/lista.html')
 
 
 
