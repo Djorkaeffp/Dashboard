@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from dao.aluno_dao import alunoDAO
+from dao.professor_dao import professorDAO
 
 app = Flask(__name__)
 
@@ -21,6 +22,13 @@ def listar_aluno():
     dao = alunoDAO()
     lista = dao.listar()
     return render_template('aluno/lista.html', lista=lista)
+
+
+@app.route('/professor')
+def listar_professor():
+    dao = professorDAO()
+    lista = dao.listar()
+    return render_template('professor/lista.html', lista=lista)
 
 
 
