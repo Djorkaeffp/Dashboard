@@ -19,7 +19,7 @@ def cadastrar():
 @app.route('/aluno')
 def listar_aluno():
     dao = alunoDAO()
-    lista = dao.listar
+    lista = dao.listar()
     return render_template('aluno/lista.html',lista=lista)
 
 
