@@ -20,7 +20,7 @@ def cadastrar():
 def listar_aluno():
     dao = alunoDAO()
     lista = dao.listar()
-    return render_template('aluno/lista.html')
+    return render_template('aluno/lista.html', lista=lista)
 
 
 
