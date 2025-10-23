@@ -16,7 +16,9 @@
         </tr>
     </thead>
     <tbody>
-        {% for item in lista_alunos %}
+
+        {% item in lista_alunos %}
+
         <tr>
             <td>{{ item[0] }}</td>
             <td>{{ item[1] }}</td>
@@ -26,7 +28,9 @@
               
             </td>
         </tr>
+
         {% endfor %}
+
     </tbody>
     </table>
     

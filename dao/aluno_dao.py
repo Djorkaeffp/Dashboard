@@ -6,7 +6,8 @@ class alunoDAO:
 
     def listar(self):
         conn = get_connection()
-        cursor = conn.curso()
+        cursor = conn.cursor()
         cursor.execute(self.sqlSelect)
         lista = cursor.fetchall()
+        conn.close()
         return lista
