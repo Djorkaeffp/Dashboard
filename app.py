@@ -17,7 +17,7 @@ def cadastrar():
     return render_template('cadastrar.html')
 
 @app.route('/aluno')
-def listar_aluno():
+def listar_alunos():
     dao = alunoDAO()
     lista = dao.listar()
     return render_template('aluno/lista.html',lista=lista)
