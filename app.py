@@ -9,9 +9,11 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/turma')
-def turma():
-    return render_template('turma.html')
+@app.route('/curso')
+def listar_curso():
+    dao = cursoDAO()
+    lista = dao.listar()
+    return render_template('curso/lista.html', lista=lista)
 
 @app.route('/cadastrar')
 def cadastrar():
