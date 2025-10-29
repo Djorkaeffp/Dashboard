@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from dao.aluno_dao import alunoDAO
 from dao.professor_dao import professorDAO
+from dao.curso_dao import cursoDAO
 
 app = Flask(__name__)
 
