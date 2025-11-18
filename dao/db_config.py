@@ -4,4 +4,4 @@ DB_PATH = "postgresql://neondb_owner:npg_ly2KSID7XiTU@ep-autumn-truth-ahra4w2g-p
 
 def get_connection():
     conn = psycopg2.connect(DB_PATH)
-    return connp
+    return conn
