@@ -1,15 +1,11 @@
 {% include 'cabecalho.html' %}
 
+<h1 class="mb-4">Lista de Professores</h1>
 
-<h1 class="mb-4">Lista de Alunos</h1>
+<a href="/professor/form" class="btn btn-primary mb-3">Novo</a>
 
-
-
-
-
-
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -17,21 +13,26 @@
             <th>Ações</th>
         </tr>
     </thead>
+
     <tbody>
-        {% for item in lista %}
+        {% for p in lista %}
         <tr>
-            <td>{{ item[0] }}</td>
-            <td>{{ item[1] }}</td>
-            <td>{{ item[2] }}</td>
+            <td>{{ p[0] }}</td>
+            <td>{{ p[1] }}</td>
+            <td>{{ p[2] }}</td>
 
             <td>
-              
+                <a href="/professor/editar/{{ p[0] }}" class="btn btn-primary btn-sm">Editar</a>
+
+                <a href="/professor/remover/{{ p[0] }}"
+                   onclick="return confirm('Tem certeza que deseja remover?')"
+                   class="btn btn-danger btn-sm">
+                    Remover
+                </a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
-    </table>
-    
+</table>
 
-
-    {% include 'rodape.html' %}
+{% include 'rodape.html' %}

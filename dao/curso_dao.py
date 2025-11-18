@@ -2,7 +2,7 @@ from dao.db_config import get_connection
 
 class cursoDAO:
 
-    sqlSelect = 'SELECT id, nome_curso, duracao FROM curso'
+    sqlSelect = "SELECT id, nome_curso, duracao FROM curso ORDER BY id DESC"
 
     def listar(self):
         conn = get_connection()
@@ -11,3 +11,51 @@ class cursoDAO:
         lista = cursor.fetchall()
         conn.close()
         return lista
+
+    def salvar(self, id, nome, duracao):
+        conn = get_connection()
+        cursor = conn.cursor()
+        try:
+            if id:
+                cursor.execute(
+                    "UPDATE curso SET nome_curso=%s, duracao=%s WHERE id=%s",
+                    (nome, duracao, id)
+                )
+            else:
+                cursor.execute(
+                    "INSERT INTO curso (nome_curso, duracao) VALUES (%s, %s)",
+                    (nome, duracao)
+                )
+            conn.commit()
+            return {"status": "ok"}
+
+        except Exception as e:
+            return {"status": "erro", "mensagem": str(e)}
+
+        finally:
+            conn.close()
+
+    def buscar_por_id(self, id):
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT id, nome_curso, duracao FROM curso WHERE id=%s",
+            (id,)
+        )
+        registro = cursor.fetchone()
+        conn.close()
+        return registro
+
+    def remover(self, id):
+        conn = get_connection()
+        cursor = conn.cursor()
+        try:
+            cursor.execute("DELETE FROM curso WHERE id=%s", (id,))
+            conn.commit()
+            return {"status": "ok"}
+
+        except Exception as e:
+            return {"status": "erro", "mensagem": str(e)}
+
+        finally:
+            conn.close()

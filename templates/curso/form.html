@@ -1,0 +1,26 @@
+{% include 'cabecalho.html' %}
+
+<h1 class="mb-4">
+  {% if curso %}Editar Curso{% else %}Cadastrar Curso{% endif %}
+</h1>
+
+<form action="/curso/salvar/" method="POST">
+    <input type="hidden" name="id" value="{{ curso[0] if curso else '' }}">
+
+    <div class="mb-3">
+        <label class="form-label">Nome do Curso</label>
+        <input type="text" name="nome" class="form-control" value="{{ curso[1] if curso else '' }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Duração</label>
+        <input type="text" name="duracao" class="form-control" value="{{ curso[2] if curso else '' }}" required>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button class="btn btn-primary" type="submit">Salvar</button>
+        <a href="/curso" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+
+{% include 'rodape.html' %}
